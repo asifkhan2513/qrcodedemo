@@ -69,8 +69,8 @@ body {
 /* Mobile optimizations */
 @media (max-width: 640px) {
   .container {
-    padding-left: 1rem;
-    padding-right: 1rem;
+    padding-left: 0.75rem;
+    padding-right: 0.75rem;
   }
 
   /* Ensure touch targets are at least 44px */
@@ -78,6 +78,21 @@ body {
   a {
     min-height: 44px;
     min-width: 44px;
+  }
+
+  /* Mobile card optimizations */
+  .card-hover {
+    transform: none;
+  }
+
+  .card-hover:hover {
+    transform: translateY(-2px) scale(1.01);
+  }
+
+  /* Reduce animation intensity on mobile */
+  .animate-float,
+  .animate-float-slow {
+    animation-duration: 8s;
   }
 }
 
@@ -102,4 +117,82 @@ button:focus-visible,
 a:focus-visible {
   outline: 2px solid #3b82f6;
   outline-offset: 2px;
+}
+/* TypeJS cursor styling */
+.typed-cursor {
+  color: #fb7100;
+  font-weight: bold;
+  animation: blink 1s infinite;
+}
+
+@keyframes blink {
+  0%,
+  50% {
+    opacity: 1;
+  }
+  51%,
+  100% {
+    opacity: 0;
+  }
+}
+
+/* Enhanced gradient text */
+.gradient-text {
+  background: linear-gradient(135deg, #fb7100, #ff9500);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Service card animations */
+@keyframes slideInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-slideInUp {
+  animation: slideInUp 0.6s ease-out forwards;
+}
+
+/* Improved hover effects */
+.service-card {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.service-card:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+}
+
+/* Mobile-specific improvements */
+@media (max-width: 640px) {
+  .service-card:hover {
+    transform: translateY(-4px) scale(1.01);
+  }
+
+  /* Optimize text rendering on mobile */
+  body {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+}
+
+/* Tablet optimizations */
+@media (min-width: 641px) and (max-width: 1024px) {
+  .service-card {
+    height: 180px;
+  }
+}
+
+/* Large screen optimizations */
+@media (min-width: 1025px) {
+  .service-card {
+    height: 220px;
+  }
 }

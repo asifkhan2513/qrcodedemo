@@ -1,6 +1,5 @@
 import { FaLinkedin } from "react-icons/fa6";
 import { MdCall } from "react-icons/md";
-import { FaMapMarker } from "react-icons/fa";
 import { AiOutlineGlobal } from "react-icons/ai";
 import { FaWhatsapp } from "react-icons/fa";
 
@@ -88,21 +87,21 @@ export const cardsData: CardData[] = [
   {
     id: "contact",
     title: "Contact",
-    description: "Get in touch with Me",
+    description: "Save Contact Info",
     icon: MdCall,
     color: "bg-orange-600",
     hoverColor: "hover:bg-orange-700",
-    directLink: "tel:+919214588441",
+    directLink: "tel:+917651852015",
     content: {
       description:
-        "Get in touch with me through various communication channels for collaborations.",
+        "Save Maazster Tech contact information directly to your phone contacts.",
       details: [
-        "Email: asif.khan@example.com",
-        "Phone: +919214588441",
-        "WhatsApp: Available for Quick Chat",
-        "Response Time: Within 24 hours",
+        "Company: Maazster Tech",
+        "Phone: +917651852015",
+        "Email: info@maazstertech.com",
+        "Website: https://maazstertech.com",
       ],
-      link: "mailto:asif.khan@example.com",
+      link: "mailto:info@maazstertech.com",
       linkText: "Send Email Now",
     },
   },

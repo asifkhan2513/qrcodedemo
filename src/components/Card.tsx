@@ -18,20 +18,45 @@ export default function Card({
 }: CardProps) {
   const handleClick = (e: React.MouseEvent) => {
     e.preventDefault();
-    // Direct redirect to external link
-    window.open(directLink, "_blank", "noopener,noreferrer");
+
+    // Special handling for contact card
+    if (title === "Contact") {
+      // Create vCard data
+      const vCardData = `BEGIN:VCARD
+VERSION:3.0
+FN:Maazster Tech
+ORG:Maazster Tech
+TEL:+917651852015
+EMAIL:info@maazstertech.com
+URL:https://maazstertech.com
+END:VCARD`;
+
+      // Create blob and download
+      const blob = new Blob([vCardData], { type: "text/vcard" });
+      const url = window.URL.createObjectURL(blob);
+      const link = document.createElement("a");
+      link.href = url;
+      link.download = "Maazster_Tech_Contact.vcf";
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+      window.URL.revokeObjectURL(url);
+    } else {
+      // Direct redirect to external link for other cards
+      window.open(directLink, "_blank", "noopener,noreferrer");
+    }
   };
 
   return (
     <div
       className={`
         ${color} ${hoverColor}
-        text-white rounded-xl p-6 shadow-lg 
-        transform transition-all duration-300
-        hover:scale-105 hover:shadow-xl
-        flex flex-col items-center text-center
-        min-h-[200px] justify-center
-        cursor-pointer card-hover
+        group relative overflow-hidden rounded-xl
+        shadow-lg hover:shadow-2xl
+        transform transition-all duration-500 ease-out
+        hover:scale-105 hover:-translate-y-2
+        h-[100px] sm:h-[160px] md:h-[200px]
+        cursor-pointer
         focus:outline-none focus:ring-4 focus:ring-opacity-50
       `}
       onClick={handleClick}
@@ -45,11 +70,23 @@ export default function Card({
         }
       }}
     >
-      <div className="text-4xl mb-4" role="img" aria-label={title}>
-        <IconComponent />
+      {/* Content */}
+      <div className="relative z-10 p-2 sm:p-4 md:p-6 h-full flex flex-col justify-center items-center text-center">
+        {/* Icon */}
+        <div className="mb-1 sm:mb-2 md:mb-4 text-2xl sm:text-3xl md:text-4xl text-white transform group-hover:scale-110 transition-transform duration-300">
+          <IconComponent />
+        </div>
+
+        {/* Title */}
+        <h3 className="text-sm sm:text-base md:text-lg lg:text-xl font-bold text-white mb-1 sm:mb-2 leading-tight">
+          {title}
+        </h3>
+
+        {/* Description - Hidden on mobile, visible on larger screens */}
+        <p className="hidden sm:block text-xs md:text-sm text-white opacity-90 leading-relaxed">
+          {description}
+        </p>
       </div>
-      <h2 className="text-xl font-bold mb-2">{title}</h2>
-      <p className="text-sm opacity-90">{description}</p>
     </div>
   );
 }
