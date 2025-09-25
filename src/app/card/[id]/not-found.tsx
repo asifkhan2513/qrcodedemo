@@ -9,7 +9,7 @@ export default function NotFound() {
           Card Not Found
         </h1>
         <p className="text-lg text-gray-600 dark:text-gray-300 mb-8">
-          The card you're looking for doesn't exist.
+          The card you&apos;re looking for doesn&apos;t exist.
         </p>
         <Link
           href="/"

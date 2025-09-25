@@ -16,7 +16,7 @@ export default function Card({
   hoverColor,
   directLink,
 }: CardProps) {
-  const handleClick = (e: React.MouseEvent) => {
+  const handleClick = (e: React.MouseEvent | React.KeyboardEvent) => {
     e.preventDefault();
 
     // Special handling for contact card
@@ -66,7 +66,7 @@ END:VCARD`;
       onKeyDown={(e) => {
         if (e.key === "Enter" || e.key === " ") {
           e.preventDefault();
-          handleClick(e as any);
+          handleClick(e);
         }
       }}
     >
