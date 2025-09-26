@@ -16,20 +16,7 @@ export default function Home() {
   const currentYear = today.getFullYear();
   const textRef = useRef<HTMLParagraphElement>(null);
 
-  // useEffect(() => {
-  //   const sentences = [
-  //     "Hello, welcome to my website!",
-  //     "I am Maaz Khan, Founder & CEO.",
-  //     "Connect with me "
-  //   ];
 
-  //   let tl = gsap.timeline({ repeat: -1 });
-
-  //   sentences.forEach((sentence) => {
-  //     tl.to(textRef.current, { duration: 1.5, text: sentence, ease: "none" })
-  //       .to(textRef.current, { duration: 1, text: "", ease: "none", delay: 1 });
-  //   });
-  // }, []);
 
   return (
     <div className="relative overflow-hidden bg-gradient-to-br from-gray-200 to-gray-100 dark:from-gray-900 dark:to-gray-800">
@@ -90,7 +77,7 @@ export default function Home() {
       <ServicesSection />
 
       {/* Footer */}
-      <footer className="text-center py-4 text-gray-600 dark:text-gray-400 relative z-10">
+      <footer className="text-center py-4  text-gray-600 dark:text-gray-600 relative z-10">
         <p>
           &copy; {currentYear} Maazster Next-GenX Technology. All rights
           reserved.
