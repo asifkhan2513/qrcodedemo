@@ -19,28 +19,10 @@ export default function Card({
   const handleClick = (e: React.MouseEvent | React.KeyboardEvent) => {
     e.preventDefault();
 
-    // Special handling for contact card
+    // Special handling for contact card - make phone call
     if (title === "Contact") {
-      // Create vCard data
-      const vCardData = `BEGIN:VCARD
-VERSION:3.0
-FN:Maazster Tech
-ORG:Maazster Tech
-TEL:+917651852015
-EMAIL:info@maazstertech.com
-URL:https://maazstertech.com
-END:VCARD`;
-
-      // Create blob and download
-      const blob = new Blob([vCardData], { type: "text/vcard" });
-      const url = window.URL.createObjectURL(blob);
-      const link = document.createElement("a");
-      link.href = url;
-      link.download = "Maazster_Tech_Contact.vcf";
-      document.body.appendChild(link);
-      link.click();
-      document.body.removeChild(link);
-      window.URL.revokeObjectURL(url);
+      // Direct phone call
+      window.location.href = directLink;
     } else {
       // Direct redirect to external link for other cards
       window.open(directLink, "_blank", "noopener,noreferrer");
@@ -69,7 +51,6 @@ END:VCARD`;
           handleClick(e);
         }
       }}
-     
     >
       {/* Content */}
       <div className="relative z-10 p-2 sm:p-4 md:p-6 h-full flex flex-col justify-center items-center text-center">
