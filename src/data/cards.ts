@@ -21,6 +21,48 @@ export interface CardData {
 }
 
 export const cardsData: CardData[] = [
+   {
+    id: "contact",
+    title: "Contact",
+    description: "Get in touch with Me",
+    icon: MdCall,
+    color: "bg-orange-600",
+    hoverColor: "hover:bg-orange-700",
+    directLink: "tel:+919214588441",
+    content: {
+      description:
+        "Get in touch with me through various communication channels for collaborations.",
+      details: [
+        "Email: asif.khan@example.com",
+        "Phone: +919214588441",
+        "WhatsApp: Available for Quick Chat",
+        "Response Time: Within 24 hours",
+      ],
+      link: "mailto:asif.khan@example.com",
+      linkText: "Send Email Now",
+    },
+  },
+   {
+    id: "whatsapp",
+    title: "WhatsApp",
+    description: "Connect on Whatsapp",
+    icon: FaWhatsapp,
+    color: "bg-green-600",
+    hoverColor: "hover:bg-green-700",
+    directLink: "https://wa.me/+917651852015",
+    content: {
+      description:
+        "Connect on the whatsapp.",
+      details: [
+        "Current Location: Available Worldwide",
+        "Remote Work: Fully Available",
+        "Open to Relocation: Yes",
+        "Time Zone: Flexible (UTC+0 to UTC+8)",
+      ],
+      link: "https://wa.me/+917651852015",
+      linkText: "connect on whatsapp",
+    },
+  },
   {
     id: "linkedin",
     title: "LinkedIn",
@@ -43,27 +85,7 @@ export const cardsData: CardData[] = [
       linkText: "Visit LinkedIn Profile",
     },
   },
-  {
-    id: "map",
-    title: "WhatsApp",
-    description: "Connect on Whatsapp",
-    icon: FaWhatsapp,
-    color: "bg-green-600",
-    hoverColor: "hover:bg-green-700",
-    directLink: "https://wa.me/+917651852015",
-    content: {
-      description:
-        "Find me on the map and see where I am located for potential collaborations.",
-      details: [
-        "Current Location: Available Worldwide",
-        "Remote Work: Fully Available",
-        "Open to Relocation: Yes",
-        "Time Zone: Flexible (UTC+0 to UTC+8)",
-      ],
-      link: "https://wa.me/+917651852015",
-      linkText: "connect on whatsapp",
-    },
-  },
+ 
   {
     id: "website",
     title: "Website",
@@ -85,27 +107,7 @@ export const cardsData: CardData[] = [
       linkText: "Visit Our Website",
     },
   },
-  {
-    id: "contact",
-    title: "Contact",
-    description: "Get in touch with Me",
-    icon: MdCall,
-    color: "bg-orange-600",
-    hoverColor: "hover:bg-orange-700",
-    directLink: "tel:+919214588441",
-    content: {
-      description:
-        "Get in touch with me through various communication channels for collaborations.",
-      details: [
-        "Email: asif.khan@example.com",
-        "Phone: +919214588441",
-        "WhatsApp: Available for Quick Chat",
-        "Response Time: Within 24 hours",
-      ],
-      link: "mailto:asif.khan@example.com",
-      linkText: "Send Email Now",
-    },
-  },
+ 
 ];
 
 export const getCardById = (id: string): CardData | undefined => {

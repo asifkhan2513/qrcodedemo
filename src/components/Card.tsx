@@ -18,22 +18,11 @@ export default function Card({
 }: CardProps) {
   const handleClick = (e: React.MouseEvent) => {
     e.preventDefault();
-    // Direct redirect to external link
     window.open(directLink, "_blank", "noopener,noreferrer");
   };
 
   return (
     <div
-      className={`
-        ${color} ${hoverColor}
-        text-white rounded-xl p-6 shadow-lg 
-        transform transition-all duration-300
-        hover:scale-105 hover:shadow-xl
-        flex flex-col items-center text-center
-        min-h-[200px] justify-center
-        cursor-pointer card-hover
-        focus:outline-none focus:ring-4 focus:ring-opacity-50
-      `}
       onClick={handleClick}
       role="button"
       tabIndex={0}
@@ -44,12 +33,33 @@ export default function Card({
           handleClick(e as any);
         }
       }}
+      className={`
+        ${color} ${hoverColor}
+        text-white rounded-xl p-4 shadow-lg
+        transform transition-all duration-300
+        hover:scale-105 hover:shadow-xl
+        flex items-center justify-start gap-4       /* ✅ mobile horizontal */
+        sm:flex-col sm:justify-center sm:items-center /* ✅ desktop centered */
+        w-full max-w-md mx-auto
+        min-h-[60px] sm:min-h-[200px]
+        cursor-pointer
+        focus:outline-none focus:ring-4 focus:ring-opacity-50
+      `}
     >
-      <div className="text-4xl mb-4" role="img" aria-label={title}>
+      {/* Icon */}
+      <div
+        className="text-3xl sm:text-4xl sm:mb-4 flex-shrink-0"
+        role="img"
+        aria-label={title}
+      >
         <IconComponent />
       </div>
-      <h2 className="text-xl font-bold mb-2">{title}</h2>
-      <p className="text-sm opacity-90">{description}</p>
+
+      {/* Text */}
+      <div className="flex flex-col text-left sm:text-center">
+        <h2 className="text-lg sm:text-xl font-bold">{title}</h2>
+        <p className="text-sm opacity-90">{description}</p>
+      </div>
     </div>
   );
 }
