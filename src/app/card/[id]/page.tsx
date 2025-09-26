@@ -20,24 +20,30 @@ export default function CardPage({ params }: PageProps) {
     <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-900 dark:to-gray-800">
       {/* Navigation */}
       <nav className="p-6">
-        <Link 
+        <Link
           href="/"
           className="inline-flex items-center text-gray-600 dark:text-gray-300 hover:text-gray-800 dark:hover:text-white transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500 rounded-lg px-2 py-1"
           aria-label="Go back to home page"
         >
-          <span className="mr-2" aria-hidden="true">←</span>
+          <span className="mr-2" aria-hidden="true">
+            ←
+          </span>
           Back to Home
         </Link>
       </nav>
 
       {/* Card Content */}
       <main className="container mx-auto px-4 py-8 max-w-4xl">
-        <div className={`${card.color} text-white rounded-2xl p-8 mb-8 text-center animate-fadeIn`}>
+        <div
+          className={`${card.color} text-white rounded-2xl p-8 mb-8 text-center animate-fadeIn`}
+        >
           <div className="text-6xl mb-4" role="img" aria-label={card.title}>
-            {card.icon}
+            <card.icon />
           </div>
           <h1 className="text-4xl md:text-5xl font-bold mb-4">{card.title}</h1>
-          <p className="text-xl opacity-90 responsive-text">{card.content.description}</p>
+          <p className="text-xl opacity-90 responsive-text">
+            {card.content.description}
+          </p>
         </div>
 
         {/* Details Section */}
@@ -47,12 +53,19 @@ export default function CardPage({ params }: PageProps) {
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             {card.content.details.map((detail, index) => (
-              <div 
+              <div
                 key={index}
                 className="flex items-start p-4 bg-gray-50 dark:bg-gray-700 rounded-lg transition-colors hover:bg-gray-100 dark:hover:bg-gray-600"
               >
-                <span className="text-2xl mr-3 flex-shrink-0" aria-hidden="true">✓</span>
-                <span className="text-gray-700 dark:text-gray-300 responsive-text">{detail}</span>
+                <span
+                  className="text-2xl mr-3 flex-shrink-0"
+                  aria-hidden="true"
+                >
+                  ✓
+                </span>
+                <span className="text-gray-700 dark:text-gray-300 responsive-text">
+                  {detail}
+                </span>
               </div>
             ))}
           </div>
@@ -98,8 +111,12 @@ export default function CardPage({ params }: PageProps) {
                 `}
                 aria-label={`Navigate to ${otherCard.title} page`}
               >
-                <div className="text-2xl mb-2" role="img" aria-label={otherCard.title}>
-                  {otherCard.icon}
+                <div
+                  className="text-2xl mb-2"
+                  role="img"
+                  aria-label={otherCard.title}
+                >
+                  <otherCard.icon />
                 </div>
                 <div className="font-semibold">{otherCard.title}</div>
               </Link>

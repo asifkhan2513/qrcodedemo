@@ -1,6 +1,5 @@
 import { FaLinkedin } from "react-icons/fa6";
 import { MdCall } from "react-icons/md";
-import { FaMapMarker } from "react-icons/fa";
 import { AiOutlineGlobal } from "react-icons/ai";
 import { FaWhatsapp } from "react-icons/fa";
 
@@ -107,7 +106,27 @@ export const cardsData: CardData[] = [
       linkText: "Visit Our Website",
     },
   },
- 
+  {
+    id: "contact",
+    title: "Contact",
+    description: "Save Contact Info",
+    icon: MdCall,
+    color: "bg-orange-600",
+    hoverColor: "hover:bg-orange-700",
+    directLink: "tel:+917651852015",
+    content: {
+      description:
+        "Save Maazster Tech contact information directly to your phone contacts.",
+      details: [
+        "Company: Maazster Tech",
+        "Phone: +917651852015",
+        "Email: info@maazstertech.com",
+        "Website: https://maazstertech.com",
+      ],
+      link: "mailto:info@maazstertech.com",
+      linkText: "Send Email Now",
+    },
+  },
 ];
 
 export const getCardById = (id: string): CardData | undefined => {
