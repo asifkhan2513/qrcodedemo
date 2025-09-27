@@ -1,8 +1,10 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #0e0e0e;
+  --foreground: #ffffff;
+  --gradient-primary: linear-gradient(135deg, #5721b7, #d668cd);
+  --gradient-secondary: linear-gradient(135deg, #d668cd, #5721b7);
 }
 
 @theme inline {
@@ -12,18 +14,15 @@
   --font-mono: var(--font-geist-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+body {
+  background: #0e0e0e;
+  color: #ffffff;
+  font-family: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+  min-height: 100vh;
+  position: relative;
+  z-index: 1;
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
-}
 /* Custom responsive utilities */
 @layer utilities {
   .container {
@@ -51,18 +50,83 @@ body {
     animation: fadeIn 0.6s ease-out;
   }
 
-  /* Mobile-first responsive text */
-  .responsive-text {
-    @apply text-sm sm:text-base md:text-lg lg:text-xl;
+  /* Gradient text utilities */
+  .gradient-text {
+    background: linear-gradient(135deg, #5721b7, #d668cd);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
   }
 
-  /* Card hover effects */
-  .card-hover {
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  .gradient-underline {
+    position: relative;
+    display: inline-block;
   }
 
-  .card-hover:hover {
-    transform: translateY(-4px) scale(1.02);
+  .gradient-underline::after {
+    content: "";
+    position: absolute;
+    bottom: -8px;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: linear-gradient(135deg, #5721b7, #d668cd);
+    border-radius: 2px;
+    box-shadow: 0 4px 15px rgba(87, 33, 183, 0.4);
+  }
+
+  /* Glass morphism effect */
+  .glass-card {
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3),
+      inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  }
+
+  /* Original icon colors */
+  .icon-original-color svg[data-icon="linkedin"] {
+    color: #0077b5 !important;
+  }
+
+  .icon-original-color svg[data-icon="whatsapp"] {
+    color: #25d366 !important;
+  }
+
+  .icon-original-color svg[data-icon="global"] {
+    color: #4285f4 !important;
+  }
+
+  .icon-original-color svg[data-icon="phone"] {
+    color: #ff6b35 !important;
+  }
+
+  .icon-original-color svg[data-icon="instagram"] {
+    background: linear-gradient(
+      45deg,
+      #f09433 0%,
+      #e6683c 25%,
+      #dc2743 50%,
+      #cc2366 75%,
+      #bc1888 100%
+    );
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .icon-original-color svg[data-icon="facebook"] {
+    color: #1877f2 !important;
+  }
+
+  /* Simple card hover effects */
+  .card-animation {
+    transition: all 0.3s ease;
+  }
+
+  .card-animation:hover {
+    transform: translateY(-5px) scale(1.02);
+    box-shadow: 0 10px 25px rgba(87, 33, 183, 0.2);
   }
 }
 
@@ -88,12 +152,6 @@ body {
   .card-hover:hover {
     transform: translateY(-2px) scale(1.01);
   }
-
-  /* Reduce animation intensity on mobile */
-  .animate-float,
-  .animate-float-slow {
-    animation-duration: 8s;
-  }
 }
 
 /* Tablet optimizations */
@@ -118,11 +176,13 @@ a:focus-visible {
   outline: 2px solid #3b82f6;
   outline-offset: 2px;
 }
-/* TypeJS cursor styling */
+
+/* Fix Typed.js cursor animation */
 .typed-cursor {
-  color: #fb7100;
+  color: #d668cd !important;
   font-weight: bold;
   animation: blink 1s infinite;
+  display: inline-block;
 }
 
 @keyframes blink {
@@ -136,63 +196,136 @@ a:focus-visible {
   }
 }
 
-/* Enhanced gradient text */
-.gradient-text {
-  background: linear-gradient(135deg, #fb7100, #ff9500);
+/* Services section styles */
+.services-section {
+  position: relative;
+  min-height: 60vh;
+  overflow: hidden;
+  z-index: 3;
+}
+
+.services-section .typed-cursor {
+  color: #d668cd !important;
+  font-weight: bold;
+  animation: blink 1s infinite;
+  display: inline-block;
+}
+
+.services-section .gradient-text {
+  background: linear-gradient(135deg, #5721b7, #d668cd);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
+  display: inline-block;
 }
 
-/* Service card animations */
-@keyframes slideInUp {
-  from {
-    opacity: 0;
-    transform: translateY(30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+.services-section h2,
+.services-section p,
+.services-section span {
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
 }
 
-.animate-slideInUp {
-  animation: slideInUp 0.6s ease-out forwards;
-}
-
-/* Improved hover effects */
-.service-card {
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.service-card:hover {
-  transform: translateY(-8px) scale(1.02);
-  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
-}
-
-/* Mobile-specific improvements */
+/* Mobile text wrapping for services */
 @media (max-width: 640px) {
-  .service-card:hover {
-    transform: translateY(-4px) scale(1.01);
+  .services-section {
+    min-height: 50vh;
   }
 
-  /* Optimize text rendering on mobile */
-  body {
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
+  .services-section .gradient-text {
+    font-size: 0.9rem !important;
+    line-height: 1.4 !important;
+    word-break: break-word;
+    overflow-wrap: break-word;
+    hyphens: auto;
+  }
+
+  .services-section h2 {
+    font-size: 1.875rem !important;
+    line-height: 1.2;
+  }
+
+  .services-section p {
+    font-size: 0.875rem !important;
+    line-height: 1.5;
   }
 }
 
-/* Tablet optimizations */
-@media (min-width: 641px) and (max-width: 1024px) {
-  .service-card {
-    height: 180px;
+@media (max-width: 480px) {
+  .services-section .gradient-text {
+    font-size: 0.8rem !important;
+    max-width: 90vw !important;
   }
 }
 
-/* Large screen optimizations */
-@media (min-width: 1025px) {
-  .service-card {
-    height: 220px;
-  }
+/* Ensure proper layering */
+.three-background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: -1;
+  pointer-events: none;
+}
+
+.content-layer,
+.locomotive-scroll-container {
+  position: relative;
+  z-index: 2;
+}
+
+.card-animation {
+  position: relative;
+  z-index: 3;
+}
+
+header {
+  position: relative;
+  z-index: 4;
+}
+
+/* Three.js background performance optimization */
+.three-background canvas {
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  width: 100vw !important;
+  height: 100vh !important;
+  z-index: -1 !important;
+  pointer-events: none !important;
+}
+
+/* Locomotive Scroll Enhanced Styles */
+.locomotive-scroll-container {
+  overflow: hidden;
+  position: relative;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #0e0e0e;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(135deg, #5721b7, #d668cd);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(135deg, #d668cd, #5721b7);
+}
+
+/* Selection color */
+::selection {
+  background: rgba(87, 33, 183, 0.3);
+  color: white;
+}
+
+::-moz-selection {
+  background: rgba(87, 33, 183, 0.3);
+  color: white;
 }

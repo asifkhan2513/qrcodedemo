@@ -1,6 +1,10 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import ThreeBackground from "@/components/ThreeBackground";
+import LocomotiveScrollProvider from "@/components/LocomotiveScrollProvider";
+import GSAPAnimations from "@/components/GSAPAnimations";
+import ErrorBoundary from "@/components/ErrorBoundary";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -26,8 +30,16 @@ export default function RootLayout({
     <html lang="en">
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        style={{ position: "relative", zIndex: 1 }}
       >
-        {children}
+        <ErrorBoundary>
+          <ThreeBackground />
+          <div style={{ position: "relative", zIndex: 2 }}>
+            <LocomotiveScrollProvider>
+              <GSAPAnimations>{children}</GSAPAnimations>
+            </LocomotiveScrollProvider>
+          </div>
+        </ErrorBoundary>
       </body>
     </html>
   );
