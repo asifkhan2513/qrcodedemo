@@ -53,21 +53,30 @@ export default function Card({
       }}
     >
       {/* Content */}
-      <div className="relative z-10 p-2 sm:p-4 md:p-6 h-full flex flex-col justify-center items-center text-center">
+      <div
+        className="
+          relative z-10 p-2 sm:p-4 md:p-6 h-full
+          flex flex-row items-center justify-start  px-8    
+           sm:flex-col sm:items-center sm:justify-center         
+          gap-2 sm:gap-4
+        "
+      >
         {/* Icon */}
-        <div className="mb-1 sm:mb-2 md:mb-4 text-2xl sm:text-3xl md:text-4xl text-white transform group-hover:scale-110 transition-transform duration-300">
+        <div className="text-4xl sm:text-3xl md:text-4xl text-white transform group-hover:scale-110 transition-transform duration-300">
           <IconComponent />
         </div>
 
-        {/* Title */}
-        <h3 className="text-sm sm:text-base md:text-lg lg:text-xl font-bold text-white mb-1 sm:mb-2 leading-tight">
-          {title}
-        </h3>
+        {/* Title + Description */}
+        <div className="flex flex-col sm:items-center sm:text-center">
+          <h3 className="text-sm sm:text-base md:text-lg lg:text-xl font-bold text-white leading-tight">
+            {title}
+          </h3>
 
-        {/* Description - Hidden on mobile, visible on larger screens */}
-        <p className="hidden sm:block text-xs md:text-sm text-white opacity-90 leading-relaxed">
-          {description}
-        </p>
+          {/* Description - Hidden on mobile, visible on larger screens */}
+          <p className=" text-xs md:text-sm text-white opacity-90 leading-relaxed mt-1 sm:mt-2">
+            {description}
+          </p>
+        </div>
       </div>
     </div>
   );

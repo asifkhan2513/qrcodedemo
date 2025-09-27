@@ -47,7 +47,7 @@ export default function ServicesSection() {
               className="text-[#fb7100] font-semibold"
             ></span>
           </div>
-          <p className="text-lg text-white dark:text-gray-600 max-w-3xl mx-auto">
+          <p className="text-lg text-gray-600  dark:text-gray-300 max-w-3xl mx-auto">
             Transform your ideas into reality with our comprehensive range of
             digital solutions. From concept to deployment, we&apos;ve got you
             covered.

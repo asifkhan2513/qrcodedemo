@@ -64,7 +64,7 @@ export default function Home() {
 
       {/* Cards Grid */}
       <main className="container mx-auto px-4 py-6 sm:py-8 mb-8 relative z-10">
-        <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 md:gap-6 max-w-6xl mx-auto">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 md:gap-6 max-w-6xl mx-auto">
           {cardsData.map((card, index) => (
             <div
               key={card.id}
@@ -94,7 +94,7 @@ export default function Home() {
       <ServicesSection />
 
       {/* Footer */}
-      <footer className="text-center py-4  text-gray-600 dark:text-gray-600 relative z-10">
+      <footer className="text-center py-4  text-gray-600  dark:text-gray-300 relative z-10">
         <p>
           &copy; {currentYear} Maazster Next-GenX Technology. All rights
           reserved.
