@@ -11,12 +11,16 @@ export default function ServicesSection() {
     if (typedRef.current) {
       const typed = new Typed(typedRef.current, {
         strings: [
-          "Web Development",
-          "Mobile Apps",
-          "Cloud Solutions",
-          "UI/UX Design",
-          "Full Stack Development",
-          "DevOps Consulting",
+          "360 Digital marketing",
+          "Web / App  Development",
+          "Advertisment campains / PR (Public Relations)",
+          "Sofware Development",
+          "Ai Solutions",
+          "Commercial Photography",
+          "Ui/Ux Design",
+          "SEO Services",
+          "Social Media Marketing",
+          "Branding Services",
         ],
         typeSpeed: 80,
         backSpeed: 50,
