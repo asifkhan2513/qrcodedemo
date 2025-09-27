@@ -126,9 +126,8 @@ const ThreeBackground = () => {
       ];
 
       // Create floating shapes
-      const shapes: THREE.Mesh[] = [];
+      const shapes: THREE.Object3D[] = [];
       const shapeTypes = [
-        "star",
         "circle",
         "diamond",
         "rectangle",
@@ -146,12 +145,8 @@ const ThreeBackground = () => {
           const material =
             materials[Math.floor(Math.random() * materials.length)];
 
-          let shape;
-          if (shapeType === "star") {
-            shape = new THREE.Line(geometry, material);
-          } else {
-            shape = new THREE.Mesh(geometry, material);
-          }
+          // Only create Mesh objects to avoid type conflicts
+          const shape = new THREE.Mesh(geometry, material);
 
           // Random position
           shape.position.set(
