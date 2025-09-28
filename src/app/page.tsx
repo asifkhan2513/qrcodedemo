@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react";
 import Card from "@/components/Card";
 import ServicesSection from "@/components/ServicesSection";
+import AddressSection from "@/components/AddressSection";
 import LoadingScreen from "@/components/LoadingScreen";
 import { cardsData } from "@/data/cards";
 import logo from "../app/assests/Logo.webp";
@@ -56,7 +57,7 @@ export default function Home() {
              mb-4 bg-gradient-to-r from-[#ffffff] via-[#ffffff] to-[#ffffff] 
              bg-clip-text text-white"
         >
-          Mohammad Maaz
+          Er. Mohd Maaz
         </h1>
 
         <p className="subtitle text-lg sm:text-xl text-gray-300 mb-2 font-medium">
@@ -101,6 +102,11 @@ export default function Home() {
       {/* Services Section */}
       <div className="services-section" data-scroll data-scroll-speed="0.3">
         <ServicesSection />
+      </div>
+
+      {/* Address Section */}
+      <div className="address-section" data-scroll data-scroll-speed="0.2">
+        <AddressSection />
       </div>
 
       {/* Footer */}

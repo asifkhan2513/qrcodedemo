@@ -21,7 +21,7 @@ const getIconColorClass = (title: string): string => {
     case "contact":
       return "text-[#ff6b35]";
     case "instagram":
-      return "instagram-gradient";
+      return "text-pink-600";
     case "facebook":
       return "text-[#1877f2]";
     default:
