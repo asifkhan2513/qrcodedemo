@@ -39,3 +39,8 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+FINAL_IMPROVEMENTS.md
+HOVER_EFFECTS_UPDATE.md
+NEW_DESIGN_SUMMARY.md
+.kiro
+

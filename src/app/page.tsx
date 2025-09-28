@@ -51,7 +51,11 @@ export default function Home() {
           />
         </div>
 
-        <h1 className="main-heading text-3xl sm:text-5xl md:text-7xl font-bold text-white mb-4 gradient-underline">
+        <h1
+          className="main-heading text-3xl sm:text-5xl md:text-7xl font-bold 
+             mb-4 bg-gradient-to-r from-[#ffffff] via-[#ffffff] to-[#ffffff] 
+             bg-clip-text text-white"
+        >
           Mohammad Maaz
         </h1>
 
@@ -67,11 +71,11 @@ export default function Home() {
 
       {/* Cards Grid */}
       <main
-        className="relative z-10 container mx-auto px-4 py-4 mb-8"
+        className="relative z-10 container mx-auto px-6 sm:px-4 py-4 mb-8"
         data-scroll
         data-scroll-speed="0.2"
       >
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 max-w-7xl mx-auto">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 max-w-7xl mx-auto pl-4 sm:pl-0">
           {cardsData.map((card, index) => (
             <div
               key={card.id}

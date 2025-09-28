@@ -74,7 +74,7 @@ body {
     height: 4px;
     width: 100%;
     background: linear-gradient(90deg, #5721b7, #d668cd);
-    box-shadow: 0 2px 8px rgba(214, 104, 205, 0.5);
+    box-shadow: 0 2px 8px rgb(#fb7100);
     border-radius: 2px;
     animation: shimmer 2s ease-in-out infinite alternate;
   }
@@ -381,6 +381,32 @@ header {
   z-index: 4;
 }
 
+/* Enhanced text visibility */
+.main-heading,
+.subtitle,
+.description {
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.8), 0 4px 16px rgba(0, 0, 0, 0.6);
+}
+
+/* Enhanced gradient text with better visibility */
+.gradient-text,
+.gradient-text-enhanced {
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.8))
+    drop-shadow(0 0 10px rgba(87, 33, 183, 0.4));
+}
+
+/* Better contrast for all text elements */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+span {
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.7);
+}
+
 /* Three.js background performance optimization */
 .three-background canvas {
   position: fixed !important;
@@ -390,6 +416,16 @@ header {
   height: 100vh !important;
   z-index: -1 !important;
   pointer-events: none !important;
+}
+
+/* Ensure html and body have the correct background */
+html {
+  background: #0e0e0e;
+}
+
+html,
+body {
+  background-color: #0e0e0e !important;
 }
 
 /* Locomotive Scroll Enhanced Styles */
