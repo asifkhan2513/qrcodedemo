@@ -521,17 +521,40 @@ body {
 }
 
 .animate-border-spin {
-  background: linear-gradient(
-    90deg,
-    #3b82f6,
-    #8b5cf6,
-    #ec4899,
-    #f59e0b,
-    #10b981,
-    #3b82f6
-  );
+  background: linear-gradient(90deg, #8b5cf6, #ec4899, #f59e0b);
   background-size: 300% 300%;
-  animation: border-spin 3s linear infinite;
+  animation: border-spin 5s linear infinite;
+}
+
+/* Border-only animation for cards */
+.animate-border-only {
+  border: 3px box-shadow solid transparent;
+  background: linear-gradient(#0e0e0e, #0e0e0e) padding-box,
+    linear-gradient(45deg, #8b5cf6, #ec4899, #f59e0b) border-box;
+  animation: border-gradient-rotate 4s linear infinite;
+}
+
+@keyframes border-gradient-rotate {
+  0% {
+    background: linear-gradient(#0e0e0e, #0e0e0e) padding-box,
+      linear-gradient(0deg, #8b5cf6, #ec4899, #f59e0b) border-box;
+  }
+  25% {
+    background: linear-gradient(#0e0e0e, #0e0e0e) padding-box,
+      linear-gradient(90deg, #8b5cf6, #ec4899, #f59e0b) border-box;
+  }
+  50% {
+    background: linear-gradient(#0e0e0e, #0e0e0e) padding-box,
+      linear-gradient(180deg, #8b5cf6, #ec4899, #f59e0b) border-box;
+  }
+  75% {
+    background: linear-gradient(#0e0e0e, #0e0e0e) padding-box,
+      linear-gradient(270deg, #8b5cf6, #ec4899, #f59e0b) border-box;
+  }
+  100% {
+    background: linear-gradient(#0e0e0e, #0e0e0e) padding-box,
+      linear-gradient(360deg, #8b5cf6, #ec4899, #f59e0b) border-box;
+  }
 }
 
 /* Mobile responsive adjustments for address cards */
