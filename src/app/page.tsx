@@ -6,7 +6,7 @@ import ServicesSection from "@/components/ServicesSection";
 import LoadingScreen from "@/components/LoadingScreen";
 import ThreeBackground from "@/components/ThreeBackground";
 import { cardsData } from "@/data/cards";
-import logo from "../app/assests/Logo.png";
+import logo from "../app/assests/Logo.webp";
 import Image from "next/image";
 
 export default function Home() {
@@ -64,6 +64,7 @@ export default function Home() {
             src={logo}
             alt="Maazster Tech Logo"
             className="logo-animation h-32 w-32 sm:h-40 sm:w-40 md:h-56 md:w-56 lg:h-64 lg:w-64 filter drop-shadow-2xl floating-element"
+            loading="lazy"
           />
         </div>
 
