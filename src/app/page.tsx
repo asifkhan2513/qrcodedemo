@@ -108,7 +108,7 @@ export default function Home() {
         <p className="text-sm">
           &copy; {currentYear} Maazster Next-GenX Private Limited and
         </p>
-        <div>All rights reserved.</div>
+        <div>All right reserved.</div>
       </footer>
     </div>
   );
