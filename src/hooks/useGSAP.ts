@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef } from "react";
+import type { DependencyList } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
@@ -11,7 +12,7 @@ if (typeof window !== "undefined") {
 
 export const useGSAP = (
   callback: (context: gsap.Context) => void,
-  dependencies: unknown[] = []
+  dependencies: DependencyList = []
 ) => {
   const contextRef = useRef<gsap.Context | null>(null);
 
@@ -25,7 +26,8 @@ export const useGSAP = (
         contextRef.current.revert();
       }
     };
-  }, dependencies);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [callback, ...dependencies]);
 
   return contextRef.current;
 };

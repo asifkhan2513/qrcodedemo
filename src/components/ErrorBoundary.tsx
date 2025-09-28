@@ -37,7 +37,7 @@ class ErrorBoundary extends React.Component<
             <div className="text-center text-white p-8">
               <h2 className="text-2xl font-bold mb-4">Something went wrong</h2>
               <p className="text-gray-400 mb-4">
-                We're working to fix this issue.
+                We&apos;re working to fix this issue.
               </p>
               <button
                 onClick={() => this.setState({ hasError: false })}

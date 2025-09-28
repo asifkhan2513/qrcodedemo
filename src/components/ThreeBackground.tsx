@@ -3,6 +3,24 @@
 import { useEffect, useRef, useState } from "react";
 import * as THREE from "three";
 
+// Define interfaces for shape properties
+interface ShapeVelocity {
+  x: number;
+  y: number;
+  z: number;
+}
+
+interface ShapeRotationSpeed {
+  x: number;
+  y: number;
+  z: number;
+}
+
+interface AnimatedShape extends THREE.Mesh {
+  velocity: ShapeVelocity;
+  rotationSpeed: ShapeRotationSpeed;
+}
+
 const ThreeBackground = () => {
   const mountRef = useRef<HTMLDivElement>(null);
   const sceneRef = useRef<THREE.Scene | null>(null);
@@ -126,7 +144,7 @@ const ThreeBackground = () => {
       ];
 
       // Create floating shapes
-      const shapes: THREE.Object3D[] = [];
+      const shapes: AnimatedShape[] = [];
       const shapeTypes = [
         "circle",
         "diamond",
@@ -145,8 +163,11 @@ const ThreeBackground = () => {
           const material =
             materials[Math.floor(Math.random() * materials.length)];
 
-          // Only create Mesh objects to avoid type conflicts
-          const shape = new THREE.Mesh(geometry, material);
+          // Create mesh with proper typing
+          const baseMesh = new THREE.Mesh(geometry, material);
+
+          // Cast to our extended interface
+          const shape = baseMesh as unknown as AnimatedShape;
 
           // Random position
           shape.position.set(
@@ -162,14 +183,14 @@ const ThreeBackground = () => {
             Math.random() * Math.PI
           );
 
-          // Store movement properties
-          (shape as any).velocity = {
+          // Store movement properties with proper typing
+          shape.velocity = {
             x: (Math.random() - 0.5) * 0.01,
             y: (Math.random() - 0.5) * 0.01,
             z: (Math.random() - 0.5) * 0.01,
           };
 
-          (shape as any).rotationSpeed = {
+          shape.rotationSpeed = {
             x: (Math.random() - 0.5) * 0.01,
             y: (Math.random() - 0.5) * 0.01,
             z: (Math.random() - 0.5) * 0.01,
@@ -268,27 +289,25 @@ const ThreeBackground = () => {
 
           // Animate shapes with movement and rotation
           shapes.forEach((shape) => {
-            const shapeAny = shape as any;
-
             // Move shapes
-            shape.position.x += shapeAny.velocity.x;
-            shape.position.y += shapeAny.velocity.y;
-            shape.position.z += shapeAny.velocity.z;
+            shape.position.x += shape.velocity.x;
+            shape.position.y += shape.velocity.y;
+            shape.position.z += shape.velocity.z;
 
             // Rotate shapes
-            shape.rotation.x += shapeAny.rotationSpeed.x;
-            shape.rotation.y += shapeAny.rotationSpeed.y;
-            shape.rotation.z += shapeAny.rotationSpeed.z;
+            shape.rotation.x += shape.rotationSpeed.x;
+            shape.rotation.y += shape.rotationSpeed.y;
+            shape.rotation.z += shape.rotationSpeed.z;
 
             // Bounce off boundaries
             if (shape.position.x > 20 || shape.position.x < -20) {
-              shapeAny.velocity.x *= -1;
+              shape.velocity.x *= -1;
             }
             if (shape.position.y > 12 || shape.position.y < -12) {
-              shapeAny.velocity.y *= -1;
+              shape.velocity.y *= -1;
             }
             if (shape.position.z > 20 || shape.position.z < -20) {
-              shapeAny.velocity.z *= -1;
+              shape.velocity.z *= -1;
             }
 
             // Floating motion based on time
@@ -331,6 +350,9 @@ const ThreeBackground = () => {
 
       window.addEventListener("resize", handleResize, { passive: true });
 
+      // Capture current mount ref for cleanup
+      const currentMount = mountRef.current;
+
       // Cleanup
       return () => {
         try {
@@ -340,8 +362,6 @@ const ThreeBackground = () => {
           if (animationIdRef.current) {
             cancelAnimationFrame(animationIdRef.current);
           }
-
-          const currentMount = mountRef.current;
           if (
             currentMount &&
             renderer.domElement &&

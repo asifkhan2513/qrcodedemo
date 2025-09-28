@@ -7,7 +7,6 @@ export default function ServicesSection() {
   const typedRef = useRef<HTMLSpanElement>(null);
   const typedInstance = useRef<Typed | null>(null);
   const [isClient, setIsClient] = useState(false);
-  const [isTypedReady, setIsTypedReady] = useState(false);
 
   useEffect(() => {
     setIsClient(true);
@@ -46,10 +45,10 @@ export default function ServicesSection() {
             fadeOut: false,
             autoInsertCss: true,
             onComplete: () => {
-              setIsTypedReady(true);
+              // Animation completed
             },
             onStringTyped: () => {
-              setIsTypedReady(true);
+              // String typed
             },
           });
         }
@@ -80,33 +79,38 @@ export default function ServicesSection() {
 
   return (
     <section
-      className="relative z-10 py-16 px-4 services-section"
+      className="relative z-10 py-16 px-4 services-section "
       data-scroll
       data-scroll-speed="0.4"
     >
       <div className="max-w-6xl mx-auto relative z-20">
-        <div className="bg-black/20 border border-gray-800/30 rounded-2xl backdrop-blur-sm p-6 sm:p-8 md:p-12">
+        <div className="bg-black/20 border border-gray-800/30 rounded-2xl backdrop-blur-sm p-4 sm:p-6 md:p-8 lg:p-12 mx-2 sm:mx-4 overflow-hidden">
           {/* Content */}
           <div className="text-center">
             <h2 className="animate-heading text-3xl sm:text-4xl md:text-6xl font-bold text-white mb-6 sm:mb-8">
-              Our <span className="gradient-text">Services</span>
+              Our{" "}
+              <span className="gradient-underline gradient-text-enhanced text-3xl sm:text-4xl md:text-6xl font-extrabold tracking-tight">
+                Services
+              </span>
             </h2>
 
-            <div className="text-base sm:text-lg md:text-xl lg:text-3xl text-gray-300 mb-8 min-h-[100px] sm:min-h-[80px] md:min-h-[60px] flex flex-col items-center justify-center gap-3 px-2">
+            <div className="text-base sm:text-lg md:text-xl lg:text-3xl text-gray-300 mb-8 min-h-[100px] sm:min-h-[80px] md:min-h-[60px] flex flex-col items-center justify-center gap-3 px-2 overflow-hidden">
               <span className="text-white text-center">We specialize in</span>
-              <span
-                ref={typedRef}
-                className="gradient-text font-semibold text-center w-full max-w-[95vw] sm:max-w-[80vw] md:max-w-[600px] break-words leading-tight"
-                style={{
-                  minHeight: "2em",
-                  lineHeight: "1.3",
-                  wordWrap: "break-word",
-                  overflowWrap: "break-word",
-                  hyphens: "auto",
-                }}
-              >
-                {!isClient && "Digital Solutions"}
-              </span>
+              <div className="w-full flex justify-center">
+                <span
+                  ref={typedRef}
+                  className="gradient-text-enhanced font-semibold text-center max-w-[90%] sm:max-w-[85%] md:max-w-[600px] break-words leading-tight block"
+                  style={{
+                    minHeight: "2em",
+                    lineHeight: "1.3",
+                    wordWrap: "break-word",
+                    overflowWrap: "break-word",
+                    hyphens: "auto",
+                  }}
+                >
+                  {!isClient && "Digital Solutions"}
+                </span>
+              </div>
             </div>
 
             <p className="text-sm sm:text-base md:text-lg lg:text-xl text-gray-300 max-w-4xl mx-auto leading-relaxed mb-8 px-4">

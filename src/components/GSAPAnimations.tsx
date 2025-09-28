@@ -4,6 +4,11 @@ import { useEffect, useRef, useState } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
+// Define interface for elements with cleanup functions
+interface ElementWithCleanup extends Element {
+  _gsapCleanup?: () => void;
+}
+
 interface GSAPAnimationsProps {
   children: React.ReactNode;
 }
@@ -175,7 +180,7 @@ const GSAPAnimations: React.FC<GSAPAnimationsProps> = ({ children }) => {
             cardElement.addEventListener("mouseleave", handleMouseLeave);
 
             // Store cleanup functions
-            (cardElement as any)._gsapCleanup = () => {
+            (cardElement as ElementWithCleanup)._gsapCleanup = () => {
               cardElement.removeEventListener("mouseenter", handleMouseEnter);
               cardElement.removeEventListener("mouseleave", handleMouseLeave);
             };
@@ -206,8 +211,9 @@ const GSAPAnimations: React.FC<GSAPAnimationsProps> = ({ children }) => {
           // Clean up event listeners
           const cards = document.querySelectorAll(".card-animation");
           cards.forEach((card) => {
-            if ((card as any)._gsapCleanup) {
-              (card as any)._gsapCleanup();
+            const cardWithCleanup = card as ElementWithCleanup;
+            if (cardWithCleanup._gsapCleanup) {
+              cardWithCleanup._gsapCleanup();
             }
           });
 
