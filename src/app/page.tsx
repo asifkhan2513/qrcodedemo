@@ -106,7 +106,7 @@ export default function Home() {
       {/* Footer */}
       <footer className="relative z-10 text-center py-8 text-gray-400 border-t border-gray-800">
         <p className="text-sm">
-          &copy; {currentYear} Maazster Next-GenX Technology. All rights
+          &copy; {currentYear} Maazster Next-GenX private limited and All right
           reserved.
         </p>
       </footer>
