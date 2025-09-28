@@ -60,7 +60,7 @@ export default function Home() {
              mb-4 bg-gradient-to-r from-[#ffffff] via-[#ffffff] to-[#ffffff] 
              bg-clip-text text-white"
         >
-          Mohammad Maaz
+          Er. Mohd Maaz
         </h1>
 
         <p className="subtitle text-lg sm:text-xl text-gray-300 mb-2 font-medium">
