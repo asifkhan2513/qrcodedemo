@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import Card from "@/components/Card";
 import ServicesSection from "@/components/ServicesSection";
 import LoadingScreen from "@/components/LoadingScreen";
+import ThreeBackground from "@/components/ThreeBackground";
 import { cardsData } from "@/data/cards";
 import logo from "../app/assests/Logo.png";
 import Image from "next/image";
@@ -24,7 +25,10 @@ export default function Home() {
 
   if (!isClient) {
     return (
-      <div className="min-h-screen bg-[#0E0E0E] flex items-center justify-center">
+      <div
+        className="min-h-screen flex items-center justify-center"
+        style={{ backgroundColor: "#0E0E0E" }}
+      >
         <div className="text-white text-xl">Loading...</div>
       </div>
     );
@@ -35,7 +39,20 @@ export default function Home() {
   }
 
   return (
-    <div className="min-h-screen bg-[#0E0E0E] relative">
+    <div className="min-h-screen relative">
+      {/* Three.js Background */}
+      <ThreeBackground />
+
+      {/* Dark Background with Three.js visibility */}
+      <div
+        className="fixed inset-0 pointer-events-none"
+        style={{
+          background: "#0E0E0E",
+          opacity: 0.85,
+          zIndex: 0,
+        }}
+      />
+
       {/* Header */}
       <header
         className="relative z-10 pt-4 pb-4 text-center"
@@ -99,7 +116,10 @@ export default function Home() {
       </div>
 
       {/* Footer */}
-      <footer className="relative z-10 text-center py-8 text-gray-400 border-t border-gray-800">
+      <footer
+        className="relative z-10 text-center py-8 text-gray-400 border-t border-gray-800"
+        style={{ backgroundColor: "#0E0E0E" }}
+      >
         <p className="text-sm">
           &copy; {currentYear} Maazster Next-GenX Technology. All rights
           reserved.

@@ -109,36 +109,54 @@ const ThreeBackground = () => {
         }
       };
 
-      // Create materials with different colors
+      // Create materials with different colors and styles
       const materials = [
         new THREE.MeshBasicMaterial({
           color: 0x5721b7,
           transparent: true,
-          opacity: 0.6,
+          opacity: 0.7,
           wireframe: true,
         }),
         new THREE.MeshBasicMaterial({
           color: 0xd668cd,
           transparent: true,
-          opacity: 0.6,
+          opacity: 0.7,
           wireframe: true,
         }),
         new THREE.MeshBasicMaterial({
           color: 0x8b4cb8,
           transparent: true,
-          opacity: 0.5,
+          opacity: 0.6,
           wireframe: true,
         }),
         new THREE.MeshBasicMaterial({
           color: 0x9d4edd,
           transparent: true,
-          opacity: 0.5,
+          opacity: 0.6,
           wireframe: true,
         }),
         new THREE.MeshBasicMaterial({
           color: 0x7209b7,
           transparent: true,
+          opacity: 0.5,
+          wireframe: true,
+        }),
+        new THREE.MeshBasicMaterial({
+          color: 0x4c1d95,
+          transparent: true,
+          opacity: 0.8,
+          wireframe: false,
+        }),
+        new THREE.MeshBasicMaterial({
+          color: 0xe879f9,
+          transparent: true,
           opacity: 0.4,
+          wireframe: false,
+        }),
+        new THREE.MeshBasicMaterial({
+          color: 0x6366f1,
+          transparent: true,
+          opacity: 0.5,
           wireframe: true,
         }),
       ];
@@ -153,9 +171,10 @@ const ThreeBackground = () => {
         "triangle",
         "hexagon",
         "sphere",
+        "star",
       ];
 
-      for (let i = 0; i < 30; i++) {
+      for (let i = 0; i < 50; i++) {
         try {
           const shapeType =
             shapeTypes[Math.floor(Math.random() * shapeTypes.length)];
@@ -183,17 +202,17 @@ const ThreeBackground = () => {
             Math.random() * Math.PI
           );
 
-          // Store movement properties with proper typing
+          // Store movement properties with proper typing - slower, smoother movement
           shape.velocity = {
-            x: (Math.random() - 0.5) * 0.01,
-            y: (Math.random() - 0.5) * 0.01,
-            z: (Math.random() - 0.5) * 0.01,
+            x: (Math.random() - 0.5) * 0.005,
+            y: (Math.random() - 0.5) * 0.005,
+            z: (Math.random() - 0.5) * 0.005,
           };
 
           shape.rotationSpeed = {
-            x: (Math.random() - 0.5) * 0.01,
-            y: (Math.random() - 0.5) * 0.01,
-            z: (Math.random() - 0.5) * 0.01,
+            x: (Math.random() - 0.5) * 0.005,
+            y: (Math.random() - 0.5) * 0.005,
+            z: (Math.random() - 0.5) * 0.005,
           };
 
           shapes.push(shape);
@@ -203,30 +222,31 @@ const ThreeBackground = () => {
         }
       }
 
-      // Create particle system for stars
+      // Create enhanced particle system for stars
       const createStarField = () => {
         try {
           const starGeometry = new THREE.BufferGeometry();
-          const starCount = 100;
+          const starCount = 200;
           const positions = new Float32Array(starCount * 3);
           const colors = new Float32Array(starCount * 3);
+          const sizes = new Float32Array(starCount);
 
           for (let i = 0; i < starCount; i++) {
             const i3 = i * 3;
-            positions[i3] = (Math.random() - 0.5) * 80;
-            positions[i3 + 1] = (Math.random() - 0.5) * 50;
-            positions[i3 + 2] = (Math.random() - 0.5) * 80;
+            positions[i3] = (Math.random() - 0.5) * 100;
+            positions[i3 + 1] = (Math.random() - 0.5) * 60;
+            positions[i3 + 2] = (Math.random() - 0.5) * 100;
 
-            // Random star colors
+            // Random star colors with purple/pink theme
             const color = new THREE.Color();
-            color.setHSL(
-              0.7 + Math.random() * 0.3,
-              0.8,
-              0.5 + Math.random() * 0.5
-            );
+            const hue = 0.7 + Math.random() * 0.3; // Purple to pink range
+            color.setHSL(hue, 0.8, 0.5 + Math.random() * 0.5);
             colors[i3] = color.r;
             colors[i3 + 1] = color.g;
             colors[i3 + 2] = color.b;
+
+            // Random sizes
+            sizes[i] = Math.random() * 0.15 + 0.05;
           }
 
           starGeometry.setAttribute(
@@ -237,12 +257,17 @@ const ThreeBackground = () => {
             "color",
             new THREE.BufferAttribute(colors, 3)
           );
+          starGeometry.setAttribute(
+            "size",
+            new THREE.BufferAttribute(sizes, 1)
+          );
 
           const starMaterial = new THREE.PointsMaterial({
-            size: 0.08,
+            size: 0.1,
             transparent: true,
-            opacity: 0.7,
+            opacity: 0.8,
             vertexColors: true,
+            sizeAttenuation: true,
           });
 
           return new THREE.Points(starGeometry, starMaterial);
@@ -252,13 +277,67 @@ const ThreeBackground = () => {
         }
       };
 
+      // Create floating orbs for additional ambiance
+      const createFloatingOrbs = () => {
+        const orbs: AnimatedShape[] = [];
+        for (let i = 0; i < 15; i++) {
+          try {
+            const geometry = new THREE.SphereGeometry(
+              0.1 + Math.random() * 0.3,
+              16,
+              16
+            );
+            const material = new THREE.MeshBasicMaterial({
+              color: new THREE.Color().setHSL(
+                0.7 + Math.random() * 0.3,
+                0.8,
+                0.6
+              ),
+              transparent: true,
+              opacity: 0.3,
+            });
+
+            const orb = new THREE.Mesh(
+              geometry,
+              material
+            ) as unknown as AnimatedShape;
+
+            orb.position.set(
+              (Math.random() - 0.5) * 60,
+              (Math.random() - 0.5) * 40,
+              (Math.random() - 0.5) * 60
+            );
+
+            orb.velocity = {
+              x: (Math.random() - 0.5) * 0.002,
+              y: (Math.random() - 0.5) * 0.002,
+              z: (Math.random() - 0.5) * 0.002,
+            };
+
+            orb.rotationSpeed = {
+              x: 0,
+              y: 0,
+              z: 0,
+            };
+
+            orbs.push(orb);
+            scene.add(orb);
+          } catch (error) {
+            console.warn("Error creating orb:", error);
+          }
+        }
+        return orbs;
+      };
+
       const starField = createStarField();
       if (starField) {
         scene.add(starField);
       }
 
-      camera.position.z = 20;
-      camera.position.y = 0;
+      const floatingOrbs = createFloatingOrbs();
+
+      camera.position.z = 25;
+      camera.position.y = 2;
 
       // Track scroll position for dynamic effects
       let scrollY = 0;
@@ -281,49 +360,80 @@ const ThreeBackground = () => {
             1
           );
 
-          // Animate star field
+          // Animate star field with gentle rotation
           if (starField) {
-            starField.rotation.y += 0.0003;
-            starField.rotation.x += 0.0001;
+            starField.rotation.y += 0.0002;
+            starField.rotation.x += 0.00005;
+            starField.position.y = Math.sin(time * 0.1) * 0.5;
           }
 
-          // Animate shapes with movement and rotation
-          shapes.forEach((shape) => {
-            // Move shapes
+          // Animate floating orbs
+          floatingOrbs.forEach((orb) => {
+            orb.position.x += orb.velocity.x;
+            orb.position.y +=
+              orb.velocity.y + Math.sin(time * 0.5 + orb.position.x) * 0.001;
+            orb.position.z += orb.velocity.z;
+
+            // Gentle pulsing effect
+            const scale = 1 + Math.sin(time * 2 + orb.position.x) * 0.2;
+            orb.scale.setScalar(scale);
+
+            // Boundary bouncing for orbs
+            if (orb.position.x > 30 || orb.position.x < -30) {
+              orb.velocity.x *= -1;
+            }
+            if (orb.position.y > 20 || orb.position.y < -20) {
+              orb.velocity.y *= -1;
+            }
+            if (orb.position.z > 30 || orb.position.z < -30) {
+              orb.velocity.z *= -1;
+            }
+          });
+
+          // Animate shapes with smoother movement and rotation
+          shapes.forEach((shape, index) => {
+            // Smooth movement
             shape.position.x += shape.velocity.x;
             shape.position.y += shape.velocity.y;
             shape.position.z += shape.velocity.z;
 
-            // Rotate shapes
+            // Smooth rotation
             shape.rotation.x += shape.rotationSpeed.x;
             shape.rotation.y += shape.rotationSpeed.y;
             shape.rotation.z += shape.rotationSpeed.z;
 
-            // Bounce off boundaries
-            if (shape.position.x > 20 || shape.position.x < -20) {
-              shape.velocity.x *= -1;
+            // Soft boundary bouncing
+            if (shape.position.x > 25 || shape.position.x < -25) {
+              shape.velocity.x *= -0.8;
             }
-            if (shape.position.y > 12 || shape.position.y < -12) {
-              shape.velocity.y *= -1;
+            if (shape.position.y > 15 || shape.position.y < -15) {
+              shape.velocity.y *= -0.8;
             }
-            if (shape.position.z > 20 || shape.position.z < -20) {
-              shape.velocity.z *= -1;
+            if (shape.position.z > 25 || shape.position.z < -25) {
+              shape.velocity.z *= -0.8;
             }
 
-            // Floating motion based on time
-            shape.position.y += Math.sin(time + shape.position.x) * 0.0005;
+            // Gentle floating motion based on time and position
+            shape.position.y +=
+              Math.sin(time * 0.5 + shape.position.x * 0.1) * 0.002;
+            shape.position.x +=
+              Math.cos(time * 0.3 + shape.position.z * 0.1) * 0.001;
 
-            // Scale based on scroll
+            // Dynamic scaling with time offset for each shape
             const scale =
-              0.8 +
-              Math.sin(time + shape.position.x) * 0.1 +
-              scrollProgress * 0.2;
+              0.7 +
+              Math.sin(time * 0.8 + index * 0.5) * 0.15 +
+              scrollProgress * 0.3;
             shape.scale.setScalar(scale);
 
-            // Opacity based on scroll
+            // Dynamic opacity with breathing effect
             const material = shape.material as THREE.MeshBasicMaterial;
             if (material) {
-              material.opacity = 0.3 + scrollProgress * 0.3;
+              const baseOpacity = material.wireframe ? 0.4 : 0.3;
+              material.opacity =
+                baseOpacity +
+                Math.sin(time * 1.2 + index * 0.3) * 0.2 +
+                scrollProgress * 0.4;
             }
           });
 
@@ -378,6 +488,17 @@ const ThreeBackground = () => {
                 shape.material.forEach((mat) => mat.dispose());
               } else {
                 shape.material.dispose();
+              }
+            }
+          });
+
+          floatingOrbs.forEach((orb) => {
+            if (orb.geometry) orb.geometry.dispose();
+            if (orb.material) {
+              if (Array.isArray(orb.material)) {
+                orb.material.forEach((mat) => mat.dispose());
+              } else {
+                orb.material.dispose();
               }
             }
           });
