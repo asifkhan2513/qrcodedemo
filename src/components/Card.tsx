@@ -63,7 +63,7 @@ export default function Card({
       }}
     >
       {/* Content - Mobile: Row layout, Desktop: Column layout */}
-      <div className="relative z-10 p-4 sm:p-6 h-full flex flex-row sm:flex-col items-center justify-center sm:justify-center text-center gap-4 sm:gap-4">
+      <div className="relative z-10 p-12 sm:p-6 h-full flex flex-row sm:flex-col items-center justify-center sm:justify-center text-center  sm:gap-4">
         {/* Icon with original colors */}
         <div className="relative flex-shrink-0">
           <div className="icon-container relative p-3 sm:p-3 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 group-hover:border-[#FB7100]/50 group-hover:bg-[#FB7100]/10 transition-all duration-300">
