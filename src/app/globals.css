@@ -272,6 +272,90 @@ a:focus-visible {
   min-height: 60vh;
   overflow: hidden;
   z-index: 3;
+  cursor: none;
+}
+
+/* Custom cursor styles */
+.cursor-none {
+  cursor: none;
+}
+
+.cursor-none * {
+  cursor: none !important;
+}
+
+/* Egg-shaped cursor */
+.egg-cursor {
+  border-radius: 50% 50% 50% 50% / 65% 65% 35% 35%;
+  box-shadow: 0 0 20px rgba(251, 113, 0, 0.8), 0 0 40px rgba(243, 21, 84, 0.6),
+    0 0 60px rgba(156, 39, 176, 0.4), inset 0 0 20px rgba(255, 255, 255, 0.1);
+  transition: all 0.2s ease-out;
+}
+
+.egg-cursor.animate-pulse {
+  animation: eggPulse 0.8s ease-in-out infinite alternate;
+}
+
+@keyframes eggPulse {
+  0% {
+    box-shadow: 0 0 20px rgba(251, 113, 0, 0.8), 0 0 40px rgba(243, 21, 84, 0.6),
+      0 0 60px rgba(156, 39, 176, 0.4);
+  }
+  100% {
+    box-shadow: 0 0 30px rgba(251, 113, 0, 1), 0 0 60px rgba(243, 21, 84, 0.8),
+      0 0 90px rgba(156, 39, 176, 0.6);
+  }
+}
+
+/* Directional border effects */
+.directional-border {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  border-width: 2px;
+  border-style: solid;
+}
+
+/* Enhanced hover effects */
+.services-hover-container {
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  transform-style: preserve-3d;
+}
+
+.services-hover-container:hover {
+  transform: translateY(-8px) rotateX(2deg) rotateY(1deg);
+  box-shadow: 0 25px 50px rgba(251, 113, 0, 0.15),
+    0 15px 35px rgba(243, 21, 84, 0.1), 0 5px 15px rgba(156, 39, 176, 0.05);
+}
+
+/* Swiper custom styles */
+.swiper-slide {
+  background: transparent !important;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.swiper-slide-shadow-cards {
+  background: linear-gradient(
+    135deg,
+    rgba(251, 113, 0, 0.1),
+    rgba(156, 39, 176, 0.1)
+  ) !important;
+  border-radius: 12px;
+}
+
+/* Enhanced card effects */
+.swiper-cards {
+  perspective: 1200px;
+}
+
+.swiper-cards .swiper-slide {
+  transform-style: preserve-3d;
+  backface-visibility: hidden;
+}
+
+/* Scroll-based depth effect */
+.scroll-depth {
+  will-change: transform;
+  transform: translateZ(0);
 }
 
 .services-section .typed-cursor {
@@ -300,6 +384,7 @@ a:focus-visible {
   .services-section {
     min-height: 50vh;
     padding: 1rem;
+    cursor: auto; /* Disable custom cursor on mobile */
   }
 
   .services-section .gradient-text,
@@ -333,6 +418,26 @@ a:focus-visible {
     margin: 0 0.5rem;
     padding: 1rem !important;
   }
+
+  /* Disable custom cursor on mobile */
+  .cursor-none {
+    cursor: auto;
+  }
+
+  .cursor-none * {
+    cursor: auto !important;
+  }
+
+  /* Reduce hover effects on mobile */
+  .services-hover-container:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 25px rgba(251, 113, 0, 0.1);
+  }
+
+  /* Swiper mobile adjustments */
+  .swiper-cards {
+    perspective: 800px;
+  }
 }
 
 @media (max-width: 480px) {
@@ -351,6 +456,18 @@ a:focus-visible {
   .services-section .bg-black\/20 {
     margin: 0 0.25rem;
     padding: 0.75rem !important;
+  }
+
+  /* Further reduce effects on very small screens */
+  .services-hover-container:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(251, 113, 0, 0.08);
+  }
+
+  /* Adjust swiper size for small screens */
+  .swiper-cards {
+    width: 200px !important;
+    height: 100px !important;
   }
 }
 
@@ -428,10 +545,39 @@ body {
   background-color: #0e0e0e !important;
 }
 
+/* Lenis Smooth Scroll Styles */
+html.lenis {
+  height: auto;
+}
+
+.lenis.lenis-smooth {
+  scroll-behavior: auto;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+
 /* Locomotive Scroll Enhanced Styles */
 .locomotive-scroll-container {
   overflow: hidden;
   position: relative;
+}
+
+/* Performance optimizations */
+.services-section,
+.services-hover-container {
+  will-change: transform, opacity;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+}
+
+/* GPU acceleration for smooth animations */
+.directional-border,
+.services-hover-container,
+.swiper-slide {
+  transform: translateZ(0);
+  will-change: transform;
 }
 
 /* Custom scrollbar */

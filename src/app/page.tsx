@@ -5,6 +5,7 @@ import Card from "@/components/Card";
 import ServicesSection from "@/components/ServicesSection";
 import LoadingScreen from "@/components/LoadingScreen";
 import { cardsData } from "@/data/cards";
+import { useLenis } from "@/hooks/useLenis";
 import logo from "../app/assests/Logo.webp";
 import Image from "next/image";
 
@@ -13,6 +14,9 @@ export default function Home() {
   const [isClient, setIsClient] = useState(false);
   const today = new Date();
   const currentYear = today.getFullYear();
+
+  // Initialize Lenis smooth scrolling
+  useLenis();
 
   useEffect(() => {
     setIsClient(true);
