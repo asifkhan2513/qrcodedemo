@@ -32,8 +32,19 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
         style={{ position: "relative", zIndex: 1 }}
       >
+         <video
+          autoPlay
+          muted
+          loop
+          playsInline
+          id="bg-video"
+          className="fixed top-0 left-0 w-full h-full object-cover -z-10 pointer-events-none"
+        >
+          <source src="/videos/maazster.mp4" type="video/mp4" />
+          Your browser  support the video tag.
+        </video>
         <ErrorBoundary>
-          <ThreeBackground />
+          {/* <ThreeBackground /> */}
           <div style={{ position: "relative", zIndex: 2 }}>
             <LocomotiveScrollProvider>
               <GSAPAnimations>{children}</GSAPAnimations>

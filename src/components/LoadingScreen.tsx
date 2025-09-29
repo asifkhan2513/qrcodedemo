@@ -101,7 +101,7 @@ const LoadingScreen: React.FC<LoadingScreenProps> = ({ onComplete }) => {
             <div className="w-8 h-8 rounded-full bg-gradient-to-r from-[#5721B7] to-[#D668CD]"></div>
           </div>
         </div>
-
+                               
         {/* Loading text */}
         <div className="loading-text mb-8">
           <h2 className="text-3xl font-bold text-white mb-2 gradient-text">
