@@ -16,12 +16,13 @@
 }
 
 body {
-  background: #0e0e0e;
+  /* background: #0e0e0e; */
   color: #ffffff;
   font-family: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
   min-height: 100vh;
   position: relative;
   z-index: 1;
+  /* background-clip: url(); */
 }
 
 /* Custom responsive utilities */
@@ -566,4 +567,18 @@ body {
   .address-card:hover {
     transform: translateY(-2px);
   }
+}
+
+
+
+
+#bg-video {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  object-fit: cover;
+  z-index: -10;
+  pointer-events: none;
 }

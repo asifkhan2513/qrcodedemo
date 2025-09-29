@@ -12,8 +12,7 @@ import Image from "next/image";
 export default function Home() {
   const [isLoading, setIsLoading] = useState(true);
   const [isClient, setIsClient] = useState(false);
-  const today = new Date();
-  const currentYear = today.getFullYear();
+
 
   useEffect(() => {
     setIsClient(true);
@@ -36,7 +35,7 @@ export default function Home() {
   }
 
   return (
-    <div className="min-h-screen bg-[#0E0E0E] relative">
+    <div className="min-h-screen  relative">
       {/* Header */}
       <header
         className="relative z-10 pt-4 pb-4 text-center"
@@ -57,7 +56,9 @@ export default function Home() {
              mb-4 bg-gradient-to-r from-[#ffffff] via-[#ffffff] to-[#ffffff] 
              bg-clip-text text-white"
         >
-          Er. Mohd Maaz
+          Er. Mohd <span className="text-[#fc623a]
+                   
+                   ">Maaz</span>
         </h1>
 
         <p className="subtitle text-lg sm:text-xl text-gray-300 mb-2 font-medium">
@@ -112,7 +113,7 @@ export default function Home() {
       {/* Footer */}
       <footer className="relative z-10 text-center py-8 text-gray-400 border-t border-gray-800">
         <p className="text-sm">
-          &copy; {currentYear} Maazster Next-GenX Private Limited and
+          &copy; 2024 Maazster Tech Next-GenX Private Limited 
         </p>
         <div>All right reserved.</div>
       </footer>

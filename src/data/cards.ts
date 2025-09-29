@@ -2,6 +2,7 @@ import { FaFacebook, FaInstagram, FaLinkedin } from "react-icons/fa6";
 import { MdCall } from "react-icons/md";
 import { AiOutlineGlobal } from "react-icons/ai";
 import { FaWhatsapp } from "react-icons/fa";
+import { MdEmail } from "react-icons/md";
 
 export interface CardData {
   id: string;
@@ -10,7 +11,7 @@ export interface CardData {
   icon: React.ComponentType;
   color: string;
   hoverColor: string;
-  directLink: string; // Direct external link for redirect
+  directLink: string; 
   content: {
     description: string;
     details: string[];
@@ -41,6 +42,28 @@ export const cardsData: CardData[] = [
       linkText: "Call Now",
     },
   },
+  {
+    id: "email",
+    title: "Email",
+    description: "Send an email",
+    icon: MdEmail,
+    color: "bg-red-600",
+    hoverColor: "hover:bg-green-700",
+    directLink: "mailto:info@maazstertech.com",
+    content: {
+      description:
+        "Get in touch with me directly via email for inquiries, support, or collaborations.",
+      details: [
+        "Email: info@maazstertech.com",
+        "Response Time: Usually within 24 hours",
+        "Professional & Prompt Communication",
+        "Business Hours: Monday - Saturday",
+      ],
+      link: "mailto:info@maazstertech.com",
+      linkText: "Email Now",
+    },
+  },
+
   {
     id: "website",
     title: "Website",
@@ -92,7 +115,7 @@ export const cardsData: CardData[] = [
     color: "bg-blue-600",
     hoverColor: "hover:bg-blue-700",
     directLink:
-      "https://www.linkedin.com/company/maazster-tech/?originalSubdomain=in",
+      "https://www.linkedin.com/in/maazstertechfounder/?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
     content: {
       description:
         "Connect with me on LinkedIn to see my professional journey, skills, and network.",
@@ -102,7 +125,7 @@ export const cardsData: CardData[] = [
         "Recommendations from Colleagues",
         "Professional Network & Connections",
       ],
-      link: "https://www.linkedin.com/company/maazster-tech/?originalSubdomain=in",
+      link: "https://www.linkedin.com/in/maazstertechfounder/?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
       linkText: "Visit LinkedIn Profile",
     },
   },

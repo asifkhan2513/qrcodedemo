@@ -50,7 +50,7 @@ export default function Card({
 
   return (
     <div
-      className="glass-card group cursor-pointer h-[140px] sm:h-[180px] md:h-[200px] focus:outline-none focus:ring-2 focus:ring-[#FB7100]/50 rounded-2xl transition-all duration-300 relative animate-border-only"
+      className="glass-card group cursor-pointer h-[110px] sm:h-[180px] md:h-[200px] focus:outline-none focus:ring-2 focus:ring-[#FB7100]/50 rounded-2xl transition-all duration-300 relative animate-border-only"
       onClick={handleClick}
       role="button"
       tabIndex={0}
@@ -63,7 +63,7 @@ export default function Card({
       }}
     >
       {/* Content - Mobile: Row layout, Desktop: Column layout */}
-      <div className="relative z-10 p-12  h-full flex flex-row sm:flex-col items-center justify-center sm:justify-center text-center sm:gap-4">
+      <div className="relative z-10 px-12 py-0  h-full flex flex-row sm:flex-col items-center justify-center sm:justify-center text-center sm:gap-4">
         {/* Icon with original colors */}
         <div className="relative flex-shrink-0">
           <div className="icon-container relative p-3 sm:p-3 rounded-full bg-white/10 backdrop-blur-sm border border-white/20 group-hover:border-[#FB7100]/50 group-hover:bg-[#FB7100]/10 transition-all duration-300">
