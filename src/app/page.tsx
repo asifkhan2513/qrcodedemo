@@ -58,7 +58,7 @@ export default function Home() {
              mb-4 bg-gradient-to-r from-[#ffffff] via-[#ffffff] to-[#ffffff] 
              bg-clip-text text-white"
         >
-          Er. Mohd <span className="text-[#FB7100]
+          Er. Mohd <span className="text-[#fc623a]
                    
                    ">Maaz</span>
         </h1>

@@ -9,14 +9,14 @@ const AddressSection = () => {
       title: "Lucknow Office",
       address:
         "Sector 5, D-Block, Indira Nagar, Lucknow, Uttar Pradesh 226016",
-      icon: <MapPin className="w-8 h-8 sm:w-10 sm:h-10 text-[#fb7100]" />,
+      icon: <MapPin className="w-8 h-8 sm:w-10 sm:h-10 text-[#fc623a]" />,
     },
     {
       id: 1,
       title: "Ambedkar Nagar Office",
       address:
         "1080 / Sikandrabad, Naipura Road, Tanda, Ambedkar Nagar District, Uttar Pradesh, 224190",
-      icon: <MapPin className="w-8 h-8 sm:w-10 sm:h-10 text-[#fb7100]" />,
+      icon: <MapPin className="w-8 h-8 sm:w-10 sm:h-10 text-[#fc623a]" />,
     },
   ];
 
@@ -24,7 +24,7 @@ const AddressSection = () => {
     <section className="relative z-10 py-16 px-4 sm:px-6">
       <div className="max-w-7xl mx-auto">
         <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white text-center mb-12">
-          Our <span className="text-[#fb7100]">Locations</span>
+          Our <span className="text-[#fc623a]">Locations</span>
         </h2>
         
         {/* Desktop Layout - Row wise */}
