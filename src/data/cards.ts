@@ -41,7 +41,6 @@ export const cardsData: CardData[] = [
       linkText: "Call Now",
     },
   },
-
   {
     id: "website",
     title: "Website",
@@ -132,9 +131,9 @@ export const cardsData: CardData[] = [
     },
   },
   {
-    id: "whatsapcahnnel",
+    id: "Whatsapcahnnel",
     title: "WhatsApp Channel",
-    description: "Connect on whastapp Channel",
+    description: "Connect on WhatsApp Channel",
     icon: FaWhatsapp,
     color: "bg-green-600",
     hoverColor: "hover:bg-green-700",
