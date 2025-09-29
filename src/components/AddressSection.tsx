@@ -13,9 +13,9 @@ const AddressSection = () => {
     },
     {
       id: 1,
-      title: "Sikandrabad Office",
+      title: "Ambedkar Nagar Office",
       address:
-        "Sikandrabad, Naipura Road, Tanda, Ambedkar Nagar, Uttar Pradesh, 224190",
+        "Ambedkar Nagar, Naipura Road, Tanda, Ambedkar Nagar, Uttar Pradesh, 224190",
       icon: <MapPin className="w-8 h-8 sm:w-10 sm:h-10" />,
     },
   ];

@@ -87,9 +87,9 @@ export default function ServicesSection() {
         <div className="bg-black/20 border  rounded-2xl backdrop-blur-sm p-6 sm:p-6 md:p-8 lg:p-12 mx-2 sm:mx-4 overflow-hidden ">
           {/* Content */}
           <div className="text-center">
-            <h2 className="animate-heading text-4xl sm:text-4xl md:text-6xl font-bold text-white mb-8 sm:mb-8">
-              Our{" "}
-              <span className="gradient-underline  bg-gradient-to-r from-[#FB7100] via-[#f31554] to-[#9C27B0] bg-clip-text  text-4xl sm:text-4xl md:text-6xl font-extrabold tracking-tight">
+            <h2 className="animate-heading text-4xl sm:text-3xl md:text-5xl font-bold text-white mb-8 sm:mb-8">
+              <span className="inline-block mr-2 text-4xl  sm:text-3xl md:text-5xl lg:text-6xl  text-[#fb7100] font-extrabold  ">Our</span>{" "}  <br className="block sm:hidden" />
+              <span className="gradient-underline text-[#fb7100]  bg-gradient-to-r from-[#FB7100] via-[#f31554] to-[#9C27B0] bg-clip-text  text-4xl sm:text-4xl md:text-6xl font-extrabold tracking-tight">
                 Services
               </span>
             </h2>
@@ -98,17 +98,17 @@ export default function ServicesSection() {
               <span className="text-white text-center text-lg sm:text-base">
                 We specialize in
               </span>
-              <div className="w-full flex justify-center">
+              <div className="   flex justify-center items-center">
                 <span
                   ref={typedRef}
-                  className="gradient-text-enhanced font-semibold text-center max-w-[90%] sm:max-w-[85%] md:max-w-[600px] break-words leading-tight block"
-                  style={{
-                    minHeight: "2em",
-                    lineHeight: "1.3",
-                    wordWrap: "break-word",
-                    overflowWrap: "break-word",
-                    hyphens: "auto",
-                  }}
+                  className="gradient-text-enhanced font-semibold  text-center max-w-[90%] sm:max-w-[85%] md:max-w-[600px] break-words leading-tight inline-block"
+                              style={{
+                             display: "inline-block",  
+                          lineHeight: "1.5",
+                          whiteSpace: "pre",       
+                          textAlign: "center", 
+                         padding: "0 4px",  
+                          }}
                 >
                   {!isClient && "Digital Solutions"}
                 </span>
