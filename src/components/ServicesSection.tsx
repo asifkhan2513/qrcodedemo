@@ -89,7 +89,7 @@ export default function ServicesSection() {
           <div className="text-center">
             <h2 className="animate-heading text-4xl sm:text-4xl md:text-6xl font-bold text-white mb-8 sm:mb-8">
               Our{" "}
-              <span className="gradient-underline  bg-gradient-to-r from-[#FB7100] via-[#f31554] to-[#9C27B0] bg-clip-text text-transparent text-4xl sm:text-4xl md:text-6xl font-extrabold tracking-tight">
+              <span className="gradient-underline  bg-gradient-to-r from-[#FB7100] via-[#f31554] to-[#9C27B0] bg-clip-text  text-4xl sm:text-4xl md:text-6xl font-extrabold tracking-tight">
                 Services
               </span>
             </h2>
